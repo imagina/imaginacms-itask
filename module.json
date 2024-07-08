@@ -1,0 +1,14 @@
+{
+    "name": "Itask",
+    "alias": "itask",
+    "version": "1.0.0",
+	"description": "",
+    "keywords": [],
+    "priority": 1,
+    "providers": [
+        "Modules\\Itask\\Providers\\ItaskServiceProvider",
+        "Modules\\Itask\\Providers\\EventServiceProvider",
+        "Modules\\Itask\\Providers\\RouteServiceProvider"
+    ],
+    "files": []
+}
