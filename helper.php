@@ -1,19 +1,18 @@
 <?php
 
-namespace Modules\Itask;
-
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Lang;
 
-class TimeHelper
-{
-    public static function convertMinutesToSeconds($minutes)
+if (! function_exists('convertMinutesToSeconds')) {
+    function convertMinutesToSeconds($minutes)
     {
         if (!$minutes) return 0;
         return $minutes * 60;
     }
+}
 
-    public static function convertMinutesToHumanReadable($minutes)
+if (! function_exists('convertMinutesToHumanReadable')) {
+    function convertMinutesToHumanReadable($minutes)
     {
         if (!$minutes) return 0;
         if ($minutes < 60) {
@@ -25,8 +24,10 @@ class TimeHelper
 
         return $hours . ' ' . trans('itask::tasks.hours') . ($remainingMinutes ? ' ' . trans('titask::tasks.and') . ' ' . $remainingMinutes . ' ' . trans('itask::tasks.minutes') : '');
     }
+}
 
-    public static function humanizeDuration($startDate, $endDate)
+if (! function_exists('humanizeDuration')) {
+    function humanizeDuration($startDate, $endDate)
     {
         if (!$endDate) {
             return null;

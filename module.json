@@ -10,5 +10,7 @@
         "Modules\\Itask\\Providers\\EventServiceProvider",
         "Modules\\Itask\\Providers\\RouteServiceProvider"
     ],
-    "files": []
+    "files": [
+        "helper.php"
+    ]
 }

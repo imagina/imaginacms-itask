@@ -3,7 +3,6 @@
 namespace Modules\Itask\Entities;
 use Modules\Core\Icrud\Entities\CrudModel;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Itask\TimeHelper;
 
 class Task extends CrudModel
 {
@@ -44,12 +43,12 @@ class Task extends CrudModel
   public function getFormatedEstimatedTimeAttribute()
   {
     //dd($this->attributes['estimated_time']);
-      return TimeHelper::convertMinutesToHumanReadable($this->attributes['estimated_time']);
+      return convertMinutesToHumanReadable($this->attributes['estimated_time']);
   }
 
   public function getDurationAttribute()
   {
-      return TimeHelper::humanizeDuration($this->attributes['start_date'], $this->attributes['end_date']);
+      return humanizeDuration($this->attributes['start_date'], $this->attributes['end_date']);
   }
 
   public function getTotalTimelogsDurationInMinutesAttribute()
@@ -61,7 +60,7 @@ class Task extends CrudModel
   {
       $totalMinutes = $this->timelogs->sum('time_spent');
       // 1d 2h 40m...
-      return TimeHelper::convertMinutesToHumanReadable($totalMinutes);
+      return convertMinutesToHumanReadable($totalMinutes);
   }
   //============== RELATIONS ==============//
   public function status()

@@ -35,6 +35,6 @@ class Timelog extends CrudModel
   //============== ACCESSORS ==============//
   public function getFormatedTimeSpentAttribute()
   {
-      return TimeHelper::convertMinutesToHumanReadable($this->attributes['time_spent']);
+      return convertMinutesToHumanReadable($this->attributes['time_spent']);
   }
 }
