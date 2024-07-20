@@ -4,6 +4,7 @@ return [
     'itask.tasks' => [
         'manage' => 'itask::tasks.manage resource',
         'index' => 'itask::tasks.list resource',
+        'index-all' => 'itask::tasks.index-all resource',
         'create' => 'itask::tasks.create resource',
         'edit' => 'itask::tasks.edit resource',
         'destroy' => 'itask::tasks.destroy resource',

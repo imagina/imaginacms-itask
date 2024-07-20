@@ -4,6 +4,7 @@ namespace Modules\Itask\Repositories\Eloquent;
 
 use Modules\Itask\Repositories\TaskRepository;
 use Modules\Core\Icrud\Repositories\Eloquent\EloquentCrudRepository;
+use Illuminate\Support\Facades\Auth;
 
 class EloquentTaskRepository extends EloquentCrudRepository implements TaskRepository
 {
@@ -29,6 +30,14 @@ class EloquentTaskRepository extends EloquentCrudRepository implements TaskRepos
    */
   public function filterQuery($query, $filter, $params)
   {
+    if (!isset($params->permissions['itask.tasks.index-all']) ||
+      (isset($params->permissions['itask.tasks.index-all'])
+        && !$params->permissions['itask.tasks.index-all'])) {
+
+      $id = Auth::id() ?? null;
+
+      if (isset($id)) $query->where('assigned_to_id', Auth::id());
+    }
 
     /**
      * Note: Add filter name to replaceFilters attribute before replace it

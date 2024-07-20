@@ -3,9 +3,13 @@
 namespace Modules\Itask\Entities;
 use Modules\Core\Icrud\Entities\CrudModel;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Icomments\Traits\Commentable;
+use Modules\Media\Support\Traits\MediaRelation;
 
 class Task extends CrudModel
 {
+  //use MediaRelation, Commentable;
+
   protected $table = 'itask__tasks';
   public $transformer = 'Modules\Itask\Transformers\TaskTransformer';
   public $entity = 'Modules\Itask\Entities\Task';
