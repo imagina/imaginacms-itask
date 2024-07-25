@@ -8,7 +8,7 @@ use Modules\Media\Support\Traits\MediaRelation;
 
 class Task extends CrudModel
 {
-  //use MediaRelation, Commentable;
+  use MediaRelation; //, Commentable;
 
   protected $table = 'itask__tasks';
   public $transformer = 'Modules\Itask\Transformers\TaskTransformer';
