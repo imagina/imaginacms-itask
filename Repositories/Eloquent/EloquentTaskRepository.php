@@ -12,7 +12,7 @@ class EloquentTaskRepository extends EloquentCrudRepository implements TaskRepos
    * Filter names to replace
    * @var array
    */
-  protected $replaceFilters = [];
+  protected $replaceFilters = ['date'];
 
   /**
    * Relation names to replace
@@ -39,6 +39,14 @@ class EloquentTaskRepository extends EloquentCrudRepository implements TaskRepos
       if (isset($id)) $query->where('assigned_to_id', Auth::id());
     }
 
+    if (isset($filter->date)) {
+      $date = $filter->date;//Short filter date
+      $date->field = $date->field ?? null;
+      if (isset($date->from))//From a date
+        $query->whereDate($date->field ?? 'start_date', '>=', $date->from);
+      if (isset($date->to))//to a date
+        $query->whereDate($date->field ?? 'end_date', '<=', $date->to);
+    }
     /**
      * Note: Add filter name to replaceFilters attribute before replace it
      *
