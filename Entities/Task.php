@@ -3,9 +3,12 @@
 namespace Modules\Itask\Entities;
 use Modules\Core\Icrud\Entities\CrudModel;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Media\Support\Traits\MediaRelation;
 
 class Task extends CrudModel
 {
+  use MediaRelation;
+
   protected $table = 'itask__tasks';
   public $transformer = 'Modules\Itask\Transformers\TaskTransformer';
   public $entity = 'Modules\Itask\Entities\Task';
@@ -25,7 +28,7 @@ class Task extends CrudModel
     'deleted' => []
   ];
   protected $fillable = [
-    'title', 
+    'title',
     'description',
     'start_date',
     'end_date',
