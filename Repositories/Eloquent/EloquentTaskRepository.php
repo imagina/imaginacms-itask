@@ -4,6 +4,7 @@ namespace Modules\Itask\Repositories\Eloquent;
 
 use Modules\Itask\Repositories\TaskRepository;
 use Modules\Core\Icrud\Repositories\Eloquent\EloquentCrudRepository;
+use Carbon\Carbon;
 
 class EloquentTaskRepository extends EloquentCrudRepository implements TaskRepository
 {
@@ -37,6 +38,21 @@ class EloquentTaskRepository extends EloquentCrudRepository implements TaskRepos
      * if (isset($filter->status)) $query->where('status', $filter->status);
      *
      */
+
+    if (isset($filter->search) && !empty($filter->search)) {
+      $criteria = $filter->search;
+      $query->where(function ($q) use ($criteria) {
+        $q->where('title', 'like', "%{$criteria}%")
+          ->orWhere('description', 'like', "%{$criteria}%");
+      });
+    }
+
+    if (isset($filter->rangeDate)) {
+      $query->where(function ($q) use ($filter) {
+        $q->whereBetween('start_date', [$filter->rangeDate->from, $filter->rangeDate->to])
+          ->orWhereBetween('end_date', [$filter->rangeDate->from, $filter->rangeDate->to]);
+      });
+    }
 
     //Response
     return $query;
