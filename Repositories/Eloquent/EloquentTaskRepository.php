@@ -49,8 +49,8 @@ class EloquentTaskRepository extends EloquentCrudRepository implements TaskRepos
 
     if (isset($filter->rangeDate)) {
       $query->where(function ($q) use ($filter) {
-        $q->whereBetween('start_date', [$filter->rangeDate->from, $filter->rangeDate->to])
-          ->orWhereBetween('end_date', [$filter->rangeDate->from, $filter->rangeDate->to]);
+        $q->where('start_date', '<=', $filter->rangeDate->to)
+          ->where('end_date', '>=', $filter->rangeDate->from);
       });
     }
 
