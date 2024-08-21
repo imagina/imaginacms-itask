@@ -22,7 +22,7 @@ if (! function_exists('convertMinutesToHumanReadable')) {
         $hours = floor($minutes / 60);
         $remainingMinutes = $minutes % 60;
 
-        return $hours . ' ' . trans('itask::tasks.hours') . ($remainingMinutes ? ' ' . trans('titask::tasks.and') . ' ' . $remainingMinutes . ' ' . trans('itask::tasks.minutes') : '');
+        return $hours . ' ' . trans('itask::tasks.hours') . ($remainingMinutes ? ' ' . trans('itask::tasks.and') . ' ' . $remainingMinutes . ' ' . trans('itask::tasks.minutes') : '');
     }
 }
 

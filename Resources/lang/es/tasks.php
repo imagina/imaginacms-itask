@@ -21,6 +21,7 @@ return [
     ],
     'validation' => [
     ],
+    'hours' => 'hora(s)',
     'minutes' => 'minuto(s)',
     'seconds' => 'segundo(s)',
     'days' => 'día(s)',
