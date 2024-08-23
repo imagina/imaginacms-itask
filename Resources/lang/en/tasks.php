@@ -25,5 +25,6 @@ return [
     'minutes' => 'minute(s)',
     'seconds' => 'second(s)',
     'days' => 'day(s)',
-    'and' => 'and'
+    'and' => 'and',
+    'weeks' => 'week(s)',
 ];

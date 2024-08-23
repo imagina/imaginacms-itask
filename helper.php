@@ -19,10 +19,30 @@ if (! function_exists('convertMinutesToHumanReadable')) {
             return $minutes . ' ' . trans('itask::tasks.minutes');
         }
 
-        $hours = floor($minutes / 60);
-        $remainingMinutes = $minutes % 60;
+      $weeks = floor($minutes / (60 * 24 * 7));
+      $days = floor(($minutes % (60 * 24 * 7)) / (60 * 24));
+      $hours = floor(($minutes % (60 * 24)) / 60);
+      $remainingMinutes = $minutes % 60;
 
-        return $hours . ' ' . trans('itask::tasks.hours') . ($remainingMinutes ? ' ' . trans('itask::tasks.and') . ' ' . $remainingMinutes . ' ' . trans('itask::tasks.minutes') : '');
+      $result = '';
+
+      if ($weeks > 0) {
+        $result .= $weeks . ' ' . trans('itask::tasks.weeks') . ' ';
+      }
+
+      if ($days > 0) {
+        $result .= $days . ' ' . trans('itask::tasks.days') . ' ';
+      }
+
+      if ($hours > 0) {
+        $result .= $hours . ' ' . trans('itask::tasks.hours') . ' ';
+      }
+
+      if ($remainingMinutes > 0) {
+        $result .= trans('itask::tasks.and') . ' ' . $remainingMinutes . ' ' . trans('itask::tasks.minutes');
+      }
+
+      return $result;
     }
 }
 

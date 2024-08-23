@@ -26,4 +26,5 @@ return [
     'seconds' => 'segundo(s)',
     'days' => 'día(s)',
     'and' => 'y',
+    'weeks' => 'semana(s)',
 ];
