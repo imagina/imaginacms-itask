@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItaskCategoriesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -20,7 +20,7 @@ class CreateItaskCategoriesTable extends Migration
             $table->string('system_name')->unique()->nullable();
             $table->integer('parent_id')->default(0)->nullable();
             $table->text('options')->nullable();
-            
+
             // Audit fields
             $table->timestamps();
             $table->auditStamps();
@@ -36,4 +36,4 @@ class CreateItaskCategoriesTable extends Migration
     {
         Schema::dropIfExists('itask__categories');
     }
-}
+};

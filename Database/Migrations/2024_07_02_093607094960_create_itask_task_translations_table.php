@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItaskTaskTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class CreateItaskTaskTranslationsTable extends Migration
     {
         Schema::create('itask__task_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $$table->id();
-            $table->unsignedBigInteger('task_id');
+            $table->id();
+            $table->integer('task_id')->unsigned();
             $table->string('locale')->index();
             $table->string('title');
             $table->text('description')->nullable();
@@ -36,4 +36,4 @@ class CreateItaskTaskTranslationsTable extends Migration
         });
         Schema::dropIfExists('itask__task_translations');
     }
-}
+};

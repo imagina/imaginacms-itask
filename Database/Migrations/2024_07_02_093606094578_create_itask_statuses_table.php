@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItaskStatusesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ class CreateItaskStatusesTable extends Migration
             $table->integer('sort_order')->unsigned()->nullable();
             $table->string('color')->nullable();
             $table->string('icon')->nullable();
-            
+
             // Audit fields
             $table->timestamps();
             $table->auditStamps();
@@ -34,4 +34,4 @@ class CreateItaskStatusesTable extends Migration
     {
         Schema::dropIfExists('itask__statuses');
     }
-}
+};

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItaskCategoryTranslationsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -36,4 +36,4 @@ class CreateItaskCategoryTranslationsTable extends Migration
         });
         Schema::dropIfExists('itask__category_translations');
     }
-}
+};
