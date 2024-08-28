@@ -4,10 +4,11 @@ namespace Modules\Itask\Entities;
 use Modules\Core\Icrud\Entities\CrudModel;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Media\Support\Traits\MediaRelation;
+use Modules\Icomments\Traits\Commentable;
 
 class Task extends CrudModel
 {
-  use MediaRelation;
+  use MediaRelation, Commentable;
 
   protected $table = 'itask__tasks';
   public $transformer = 'Modules\Itask\Transformers\TaskTransformer';
