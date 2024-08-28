@@ -55,8 +55,8 @@ class EloquentTaskRepository extends EloquentCrudRepository implements TaskRepos
     }
 
     if (!isset($params->permissions['itask.tasks.index-all']) || !$params->permissions['itask.tasks.index-all']) {
-      $id = Auth::id() ?? null;
-      if ($id) $query->where('assigned_to_id', Auth::id());
+      $userId = \Auth::id() ?? null;
+      if ($userId) $query->where('assigned_to_id', $userId);
     }
 
     //Response
