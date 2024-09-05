@@ -37,6 +37,14 @@ class EloquentCategoryRepository extends EloquentCrudRepository implements Categ
      * if (isset($filter->status)) $query->where('status', $filter->status);
      *
      */
+    if (isset($filter->search)) { //si hay que filtrar por rango de precio
+      //find search in columns
+      $query->where(function ($query) use ($filter) {
+        $query->whereHas('translations', function ($q) use ($filter) {
+          $q->where('title', 'like', "%{$filter->search}%");
+        });
+      })->orWhere('id', 'like', '%' . $filter->search . '%');
+    }
 
     //Response
     return $query;
